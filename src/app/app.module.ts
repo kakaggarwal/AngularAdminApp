@@ -14,7 +14,6 @@ import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -28,8 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     UsersComponent,
     ProfileComponent,
     SettingsComponent,
-    RegisterComponent,
-    FooterComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
