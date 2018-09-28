@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1><mat-icon svgIcon="settings"></mat-icon> Dashboard</h1>
+        <h1>
+          <mat-icon svgIcon="settings" style="height:42px;width:42px;"></mat-icon>
+          <label class="mb-0 align-middle ml-1">Dashboard</label>
+        </h1>
       </div>
     </div>
   </div>
@@ -14,17 +17,20 @@
     <div class="row">
       <div class="col-md-3">
         <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
-          <mat-icon svgIcon="add"></mat-icon> Add Post
+          <mat-icon svgIcon="add"></mat-icon>
+          <label class="mb-0 align-middle">Add Post</label>
         </a>
       </div>
       <div class="col-md-3">
         <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
-          <mat-icon svgIcon="add"></mat-icon> Add Category
+          <mat-icon svgIcon="add"></mat-icon>
+          <label class="mb-0 align-middle">Add Category</label>
         </a>
       </div>
       <div class="col-md-3">
         <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
-          <mat-icon svgIcon="add"></mat-icon> Add User
+          <mat-icon svgIcon="add"></mat-icon>
+          <label class="mb-0 align-middle">Add User</label>
         </a>
       </div>
     </div>
@@ -51,69 +57,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td scope="row">1</td>
-                <td>Post One</td>
-                <td>Web Development</td>
-                <td>July 12, 2018</td>
+              <tr *ngFor="let post of model.posts">
+                <td scope="row">{{ post.postId }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.category }}</td>
+                <td>{{ post.datePosted | date: 'longDate' }}</td>
                 <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <mat-icon svgIcon="navigate_next"></mat-icon> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">2</td>
-                <td>Post Two</td>
-                <td>Tech Gadgets</td>
-                <td>July 13, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">3</td>
-                <td>Post Three</td>
-                <td>Web Development</td>
-                <td>July 14, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">4</td>
-                <td>Post Four</td>
-                <td>Business</td>
-                <td>July 15, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">5</td>
-                <td>Post Five</td>
-                <td>Web Development</td>
-                <td>July 16, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">6</td>
-                <td>Post Six</td>
-                <td>Health & Wellness</td>
-                <td>July 17, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
+                  <a routerLink="details" class="btn btn-secondary">
+                    <mat-icon svgIcon="label" class="text-white"></mat-icon>
+                    <label class="mb-0 ml-1 align-middle">Details</label>
                   </a>
                 </td>
               </tr>
@@ -126,27 +78,30 @@
           <div class="card-body">
             <h3>Posts</h3>
             <h1 class="display-4">
-              <mat-icon svgIcon="edit"></mat-icon> 6
+              <mat-icon svgIcon="edit" style="height:60px;width:60px;"></mat-icon>
+              <label class="mb-0 align-middle ml-1">{{ model.postCount }}</label>
             </h1>
-            <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
+            <a routerLink="posts" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
         <div class="card text-center bg-success text-white mb-3">
           <div class="card-body">
             <h3>Categories</h3>
             <h1 class="display-4">
-              <i class="fa fa-folder-open-o"></i> 4
+              <mat-icon svgIcon="folder" style="height:60px;width:60px;"></mat-icon>
+              <label class="mb-0 align-middle ml-1">{{ model.categoryCount }}</label>
             </h1>
-            <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
+            <a routerLink="categories" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
         <div class="card text-center bg-warning text-white mb-3">
           <div class="card-body">
             <h3>Users</h3>
             <h1 class="display-4">
-              <i class="fa fa-users"></i> 2
+              <mat-icon svgIcon="people" style="height:60px;width:60px;"></mat-icon>
+              <label class="mb-0 ml-1 align-middle">{{ model.userCount }}</label>
             </h1>
-            <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
+            <a routerLink="users" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
       </div>
