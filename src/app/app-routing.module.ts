@@ -8,10 +8,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'posts', component: PostsComponent },
+  { path: 'details:id', component: PostDetailComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'users', component: UsersComponent },
   { path: 'profile', component: ProfileComponent },
@@ -20,7 +22,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
   // redirect to home for any other route path
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
