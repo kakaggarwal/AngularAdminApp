@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     UsersComponent,
     ProfileComponent,
     SettingsComponent,
-    RegisterComponent
+    RegisterComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
