@@ -63,9 +63,9 @@
                 <td>{{ post.category }}</td>
                 <td>{{ post.datePosted | date: 'longDate' }}</td>
                 <td>
-                  <a routerLink="details" class="btn btn-secondary">
+                  <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
                     <mat-icon svgIcon="label" class="text-white"></mat-icon>
-                    <label class="mb-0 ml-1 align-middle">Details</label>
+                    <label class="mb-0 ml-1 align-middle cursor-pointer">Details</label>
                   </a>
                 </td>
               </tr>
@@ -81,7 +81,7 @@
               <mat-icon svgIcon="edit" style="height:60px;width:60px;"></mat-icon>
               <label class="mb-0 align-middle ml-1">{{ model.postCount }}</label>
             </h1>
-            <a routerLink="posts" class="btn btn-outline-light btn-sm">View</a>
+            <a routerLink="/posts" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
         <div class="card text-center bg-success text-white mb-3">
@@ -91,7 +91,7 @@
               <mat-icon svgIcon="folder" style="height:60px;width:60px;"></mat-icon>
               <label class="mb-0 align-middle ml-1">{{ model.categoryCount }}</label>
             </h1>
-            <a routerLink="categories" class="btn btn-outline-light btn-sm">View</a>
+            <a routerLink="/categories" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
         <div class="card text-center bg-warning text-white mb-3">
@@ -101,7 +101,7 @@
               <mat-icon svgIcon="people" style="height:60px;width:60px;"></mat-icon>
               <label class="mb-0 ml-1 align-middle">{{ model.userCount }}</label>
             </h1>
-            <a routerLink="users" class="btn btn-outline-light btn-sm">View</a>
+            <a routerLink="/users" class="btn btn-outline-light btn-sm">View</a>
           </div>
         </div>
       </div>
