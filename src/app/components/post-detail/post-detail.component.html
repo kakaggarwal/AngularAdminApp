@@ -15,18 +15,21 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 mr-auto">
-        <a href="/home" class="btn btn-light btn-block">
-          <i class="fa fa-arrow-left"></i> Back To Dashboard
+        <a routerLink="/home" class="btn btn-light btn-block">
+          <mat-icon svgIcon="keyboard_backspace" class="text-dark"></mat-icon>
+          <label class="mb-0 align-middle ml-1">Back To Dashboard</label>
         </a>
       </div>
       <div class="col-md-3">
-        <a href="#" class="btn btn-success btn-block">
-          <i class="fa fa-check"></i> Save Changes
+        <a href="javascript:void(0);" (click)="onClickSavePost();" class="btn btn-success btn-block">
+          <mat-icon svgIcon="done"></mat-icon>
+          <label class="mb-0 ml-1 align-middle">Save Changes</label>
         </a>
       </div>
       <div class="col-md-3">
-        <a href="#" class="btn btn-danger btn-block">
-          <i class="fa fa-remove"></i> Delete Post
+        <a href="javascript:void(0);" (click)="onClickDeletePost();" class="btn btn-danger btn-block">
+          <mat-icon svgIcon="delete"></mat-icon>
+          <label class="mb-0 ml-1 align-middle">Delete Post</label>
         </a>
       </div>
     </div>
@@ -65,9 +68,9 @@
               </div>
               <div class="form-group">
                 <label for="title">Body</label>
-                <textarea name="editor1" class="form-control">
-                                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus labore, repudiandae ad exercitationem totam expedita incidunt praesentium, voluptas necessitatibus beatae possimus architecto? Culpa vel ipsa aspernatur eligendi sequi eaque recusandae.
-                                  </textarea>
+                <div [froalaEditor]>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus labore, repudiandae ad exercitationem totam expedita incidunt praesentium, voluptas necessitatibus beatae possimus architecto? Culpa vel ipsa aspernatur eligendi sequi eaque recusandae.
+                </div>
               </div>
             </form>
           </div>
