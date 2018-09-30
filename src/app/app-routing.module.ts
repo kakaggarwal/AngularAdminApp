@@ -13,7 +13,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'details:id', component: PostDetailComponent },
+  { path: 'details/:id', component: PostDetailComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'users', component: UsersComponent },
   { path: 'profile', component: ProfileComponent },
