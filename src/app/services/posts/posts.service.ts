@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PostViewModel } from '../../models/posts.model';
 import { CategoriesService } from '../categories/categories.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class PostsService {
     data.forEach((value, index) => { value.postId = (index + 1) });
 
     return data;
+  }
+
+  getPostDetails(postId: number): Observable<PostViewModel> {
+    return of(this.getDemoData().find(elem => elem.postId === postId));
   }
 }
