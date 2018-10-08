@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
-import { CategoryViewModel } from '../../models/category.model';
+import { Observable, of } from 'rxjs';
+
+import { CategoryViewModel, CategoryModel } from '../../models/category.model';
+import { PostModel } from '../../models/posts.model';
+import { appDemoData } from '../../models/common.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
+  private posts: PostModel[];
+  private demoData: CategoryModel[];
 
-  constructor() { }
+  constructor() {
+    this.posts = appDemoData.posts.sort((a, b) => { return a.datePosted > b.datePosted ? 1 : a.datePosted < b.datePosted ? -1 : 0; });
+    this.demoData = appDemoData.categories;
+  }
 
-  getDemoData(): CategoryViewModel[] {
-    let data = [
-      new CategoryViewModel('Web Development'),
-      new CategoryViewModel('Tech Gadgets'),
-      new CategoryViewModel('Business'),
-      new CategoryViewModel('Health & Wellness'),
-    ];
+  getCategoriesData(): Observable<CategoryModel[]> {
+    return of(this.demoData);
+  }
 
-    data.forEach((value, index) => { value.cateogryId = (index + 1) });
+  getCategoriesView(): Observable<CategoryViewModel[]> {
+    let data: CategoryViewModel[] = [];
 
-    return data;
+    console.log(this.posts);
+    
+    this.demoData.forEach(elem => {
+      data.push(new CategoryViewModel(elem, this.posts.find(val => val.category === elem.cateogryId).datePosted));
+    });
+
+    return of(data);
   }
 }
