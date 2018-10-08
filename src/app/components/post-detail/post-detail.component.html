@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1> Post One</h1>
+        <h1> {{ model.title }} </h1>
       </div>
     </div>
   </div>
@@ -16,20 +16,20 @@
     <div class="row">
       <div class="col-md-3 mr-auto">
         <a routerLink="/home" class="btn btn-light btn-block">
-          <mat-icon svgIcon="keyboard_backspace" class="text-dark"></mat-icon>
-          <label class="mb-0 align-middle ml-1">Back To Dashboard</label>
+          <mat-icon svgIcon="keyboard_backspace" class="text-dark cursor-pointer"></mat-icon>
+          <label class="align-middle cursor-pointer mb-0 ml-1">Back To Dashboard</label>
         </a>
       </div>
       <div class="col-md-3">
         <a href="javascript:void(0);" (click)="onClickSavePost();" class="btn btn-success btn-block">
-          <mat-icon svgIcon="done"></mat-icon>
-          <label class="mb-0 ml-1 align-middle">Save Changes</label>
+          <mat-icon svgIcon="done" class="cursor-pointer"></mat-icon>
+          <label class="align-middle cursor-pointer mb-0 ml-1">Save Changes</label>
         </a>
       </div>
       <div class="col-md-3">
         <a href="javascript:void(0);" (click)="onClickDeletePost();" class="btn btn-danger btn-block">
-          <mat-icon svgIcon="delete"></mat-icon>
-          <label class="mb-0 ml-1 align-middle">Delete Post</label>
+          <mat-icon svgIcon="delete" class="cursor-pointer"></mat-icon>
+          <label class="align-middle cursor-pointer mb-0 ml-1">Delete Post</label>
         </a>
       </div>
     </div>
@@ -49,17 +49,21 @@
           <div class="card-body">
             <form>
               <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" value="Post One">
+                <label for="title" class="d-block">Title</label>
+                <mat-form-field class="w-100" appearance="outline">
+                  <input type="text" name="input-title" matInput [(ngModel)]="model.title">
+                </mat-form-field>
               </div>
               <div class="form-group">
-                <label for="category">Category</label>
-                <select name="" id="" class="form-control">
-                  <option value="">Web Development</option>
-                  <option value="">Tech Gadgets</option>
-                  <option value="">Business</option>
-                  <option value="">Health & Wellness</option>
-                </select>
+                <label for="category" class="d-block">Category</label>
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-select [(value)]="model.category">
+                    <mat-option>Please Select</mat-option>
+                    <mat-option *ngFor="let category of categories" [value]="category.cateogryId">{{ category.title }}</mat-option>
+                    <mat-option value="option2">Option 2</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
               <div class="form-group">
                 <label for="file">Image Upload</label>

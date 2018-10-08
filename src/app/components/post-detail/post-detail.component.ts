@@ -6,7 +6,9 @@ import { MatIconRegistry } from '@angular/material';
 import swal from 'sweetalert2';
 
 import { PostsService } from '../../services/posts/posts.service';
-import { PostViewModel } from '../../models/posts.model';
+import { PostDetailViewModel } from '../../models/posts.model';
+import { CategoryModel } from '../../models/category.model';
+import { CategoriesService } from '../../services/categories/categories.service';
 
 @Component({
   selector: 'app-post-detail',
@@ -14,11 +16,13 @@ import { PostViewModel } from '../../models/posts.model';
   styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
-  model: PostViewModel;
+  model: PostDetailViewModel;
 
   postId: number;
+  categories: CategoryModel[];
 
-  constructor(private activeRoute: ActivatedRoute, private postService: PostsService, private location: Location,
+  constructor(private activeRoute: ActivatedRoute, private location: Location,
+    private postService: PostsService, private categoryService: CategoriesService,
     iconRegistry: MatIconRegistry, sanitizer: DomSanitizer
   ) {
     iconRegistry.addSvgIcon(
@@ -37,12 +41,19 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getPostDetails();
+
+    this.categoryService.getCategoriesData().subscribe(data => {
+      this.categories = data
+    });
   }
 
   getPostDetails(): void {
     this.postId = +this.activeRoute.snapshot.paramMap.get('id');
 
-    this.postService.getPostDetails(this.postId).subscribe(data => this.model = data);
+    this.postService.getPostDetails(this.postId).subscribe(data => {
+      this.model = data
+      console.log(this.model);
+    });
   }
 
   onClickSavePost() {
