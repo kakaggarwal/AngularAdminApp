@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PostViewModel } from '../../models/posts.model';
+import { PostsService } from '../../services/posts/posts.service';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-posts',
@@ -6,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
+  searchValue: string = '';
+  activePage: number = 1;
 
-  constructor() { }
+  model: PostViewModel[];
+
+  constructor(private postService: PostsService,
+    iconRegistry: MatIconRegistry, sanitizer: DomSanitizer
+  ) {
+    iconRegistry.addSvgIcon(
+      'label',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-label-24px.svg')
+    );
+    iconRegistry.addSvgIcon(
+      'edit',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-edit-24px.svg')
+    );
+  }
 
   ngOnInit() {
+    this.postService.getPosts().subscribe(data => this.model = data);
+  }
+
+  onClickGotoPage(pageId: number) {
+    if (pageId > 0 && pageId < 4) {
+      this.activePage = pageId;
+    }
   }
 
 }

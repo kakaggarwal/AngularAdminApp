@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1><i class="fa fa-pencil"></i> Posts</h1>
+        <h1>
+          <mat-icon svgIcon="edit" class="text-white" style="height:42px;width:42px;"></mat-icon>
+          <label class="align-middle mb-0 ml-2">Posts</label>
+        </h1>
       </div>
     </div>
   </div>
@@ -27,7 +30,7 @@
 
 <!-- POSTS -->
 
-<section id="posts">
+<section id="posts" class="mb-5">
   <div class="container">
     <div class="row">
       <div class="col">
@@ -46,69 +49,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td scope="row">1</td>
-                <td>Post One</td>
-                <td>Web Development</td>
-                <td>July 12, 2018</td>
+              <tr *ngFor="let post of model; index as i" [ngClass]="{ 'd-none' : i < 6 * (activePage - 1) || i >= 6 * activePage }">
+                <td scope="row">{{ i + 1 }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.categoryName }}</td>
+                <td>{{ post.datePosted | date: 'longDate' }}</td>
                 <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">2</td>
-                <td>Post Two</td>
-                <td>Tech Gadgets</td>
-                <td>July 13, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">3</td>
-                <td>Post Three</td>
-                <td>Web Development</td>
-                <td>July 14, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">4</td>
-                <td>Post Four</td>
-                <td>Business</td>
-                <td>July 15, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">5</td>
-                <td>Post Five</td>
-                <td>Web Development</td>
-                <td>July 16, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td scope="row">6</td>
-                <td>Post Six</td>
-                <td>Health & Wellness</td>
-                <td>July 17, 2018</td>
-                <td>
-                  <a href="details.html" class="btn btn-secondary">
-                    <i class="fa fa-angle-double-right"></i> Details
+                  <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
+                    <mat-icon svgIcon="label" class="text-white"></mat-icon>
+                    <label class="align-middle cursor-pointer mb-0 ml-2">Details</label>
                   </a>
                 </td>
               </tr>
@@ -117,20 +66,20 @@
 
           <nav class="ml-4">
             <ul class="pagination">
-              <li class="page-item disabled">
-                <a href="#" class="page-link">Previous</a>
+              <li class="page-item" [ngClass]="{ 'active' : activePage > 1 , 'disabled' : activePage === 1 }" (click)="onClickGotoPage(activePage - 1)">
+                <a href="javascript:void(0)" class="page-link">Previous</a>
               </li>
-              <li class="page-item active">
-                <a href="#" class="page-link">1</a>
+              <li class="page-item" [ngClass]="{ 'active' : activePage === 1 }" (click)="onClickGotoPage(1)">
+                <a href="javascript:void(0)" class="page-link">1</a>
               </li>
-              <li class="page-item">
-                <a href="#" class="page-link">2</a>
+              <li class="page-item" [ngClass]="{ 'active' : activePage === 2 }" (click)="onClickGotoPage(2)">
+                <a href="javascript:void(0)" class="page-link">2</a>
               </li>
-              <li class="page-item">
-                <a href="#" class="page-link">3</a>
+              <li class="page-item" [ngClass]="{ 'active' : activePage === 3 }" (click)="onClickGotoPage(3)">
+                <a href="javascript:void(0)" class="page-link">3</a>
               </li>
-              <li class="page-item">
-                <a href="#" class="page-link">Next</a>
+              <li class="page-item" [ngClass]="{ 'active' : activePage < 3 , 'disabled' : activePage === 3 }" (click)="onClickGotoPage(activePage + 1)">
+                <a href="javascript:void(0)" class="page-link">Next</a>
               </li>
             </ul>
           </nav>
@@ -139,3 +88,15 @@
     </div>
   </div>
 </section>
+
+<footer id="main-footer" class="bg-dark text-white py-3 py-xl-4">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="lead text-center mb-0">
+          Copyright &copy; 2018
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
