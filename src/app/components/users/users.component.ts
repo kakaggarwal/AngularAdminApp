@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
+import { UsersService } from '../../services/users/users.service';
+import { UserViewModel } from '../../models/user.model';
 
 @Component({
   selector: 'app-users',
@@ -6,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  searchValue: string = '';
+  model: UserViewModel[] = [];
 
-  constructor() { }
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
+    private userService: UsersService
+  ) {
+    iconRegistry.addSvgIcon(
+      'people',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-people-24px.svg')
+    );
+  }
 
   ngOnInit() {
+    this.userService.getUsers().subscribe(data => this.model = data);
   }
 
 }

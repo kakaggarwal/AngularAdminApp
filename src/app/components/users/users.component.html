@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1><i class="fa fa-users"></i> Users</h1>
+        <h1>
+          <mat-icon svgIcon="people" class="text-white"></mat-icon>
+          <label class="align-middle mb-0 ml-2">Users</label>
+        </h1>
       </div>
     </div>
   </div>
@@ -15,7 +18,7 @@
     <div class="row">
       <div class="col-md-6 ml-auto">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+          <input type="text" class="form-control" placeholder="Search" aria-label="Search" name="input-search" [(ngModel)]="searchValue">
           <span class="input-group-append">
             <button class="btn btn-warning">Search</button>
           </span>
@@ -41,34 +44,18 @@
                 <th>#</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td scope="row">1</td>
-                <td>John Doe</td>
-                <td>johndoe@gmail.com</td>
-              </tr>
-              <tr>
-                <td scope="row">2</td>
-                <td>Brad Traversy</td>
-                <td>bradtraversy@gmail.com</td>
-              </tr>
-              <tr>
-                <td scope="row">3</td>
-                <td>Jane Doe</td>
-                <td>janedoe@gmail.com</td>
-              </tr>
-              <tr>
-                <td scope="row">5</td>
-                <td>Rock Clifford</td>
-                <td>rockclifford@gmail.com</td>
+              <tr *ngFor="let user of model; index as i">
+                <td scope="row">{{ i + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
               </tr>
             </tbody>
           </table>
 
-          <nav class="ml-4">
+          <!--<nav class="ml-4">
             <ul class="pagination">
               <li class="page-item disabled">
                 <a href="#" class="page-link">Previous</a>
@@ -86,9 +73,21 @@
                 <a href="#" class="page-link">Next</a>
               </li>
             </ul>
-          </nav>
+          </nav>-->
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<footer id="main-footer" class="bg-dark text-white py-3 py-xl-4 fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="lead text-center mb-0">
+          Copyright &copy; 2018
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
