@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule } from '@angular/material';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +17,6 @@ import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { RegisterComponent } from './components/register/register.component';
-import { HttpClientModule } from '@angular/common/http';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatIconModule,
+    FormsModule,
+    MatIconModule, MatSelectModule, MatFormFieldModule, MatInputModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [],

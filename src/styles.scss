@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+/*body { margin: 0; font-family: 'Roboto', sans-serif; }*/
+
 body {
   padding-top:2.5rem;
   /*padding-bottom: 7.5rem;*/
@@ -6,4 +9,13 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0 !important;
+}
+
+.mat-form-field-infix {
+  padding: 0.5rem 0 0.5rem 0 !important;
+  border-width: 0.4rem !important;
 }
