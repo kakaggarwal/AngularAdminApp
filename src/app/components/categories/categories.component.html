@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1><i class="fa fa-folder"></i> Categories</h1>
+        <h1>
+          <mat-icon svgIcon="folder" class="text-white"></mat-icon>
+          <label class="align-middle mb-0 ml-2">Categories</label>
+        </h1>
       </div>
     </div>
   </div>
@@ -15,7 +18,7 @@
     <div class="row">
       <div class="col-md-6 ml-auto">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+          <input type="text" class="form-control" name="input-search" placeholder="Search" aria-label="Search" [(ngModel)]="searchValue">
           <span class="input-group-append">
             <button class="btn btn-success">Search</button>
           </span>
@@ -38,37 +41,21 @@
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Date Posted</th>
-                <th></th>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Date Posted</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td scope="row">1</td>
-                <td>Web Development</td>
-                <td>July 12, 2018</td>
-              </tr>
-              <tr>
-                <td scope="row">2</td>
-                <td>Tech Gadgets</td>
-                <td>July 13, 2018</td>
-              </tr>
-              <tr>
-                <td scope="row">3</td>
-                <td>Business</td>
-                <td>July 15, 2018</td>
-              </tr>
-              <tr>
-                <td scope="row">5</td>
-                <td>Health & Wellness</td>
-                <td>July 17, 2018</td>
+              <tr *ngFor="let category of model; index as i">
+                <td scope="row">{{ i + 1 }}</td>
+                <td>{{ category.title }}</td>
+                <td>{{ category.datePosted | date : 'longDate' }}</td>
               </tr>
             </tbody>
           </table>
 
-          <nav class="ml-4">
+          <!--<nav class="ml-4">
             <ul class="pagination">
               <li class="page-item disabled">
                 <a href="#" class="page-link">Previous</a>
@@ -86,9 +73,21 @@
                 <a href="#" class="page-link">Next</a>
               </li>
             </ul>
-          </nav>
+          </nav>-->
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<footer id="main-footer" class="bg-dark text-white py-3 py-xl-4 fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="lead text-center mb-0">
+          Copyright &copy; 2018
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
