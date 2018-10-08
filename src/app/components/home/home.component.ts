@@ -5,6 +5,7 @@ import { PostsService } from '../../services/posts/posts.service';
 import { HomeViewModel } from '../../models/home.model';
 import { CategoriesService } from '../../services/categories/categories.service';
 import { UsersService } from '../../services/users/users.service';
+import { PostViewModel } from '../../models/posts.model';
 
 @Component({
   selector: 'app-home',
@@ -13,38 +14,42 @@ import { UsersService } from '../../services/users/users.service';
 })
 export class HomeComponent implements OnInit {
 
-  model: HomeViewModel;
+  model: HomeViewModel = new HomeViewModel();
 
-  constructor(iconRegsitry: MatIconRegistry, sanitizer: DomSanitizer,
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
     private postService: PostsService, private categoryService: CategoriesService, private userService: UsersService) {
-    iconRegsitry.addSvgIcon(
+    iconRegistry.addSvgIcon(
       'settings',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-settings-20px.svg')
     );
-    iconRegsitry.addSvgIcon(
+    iconRegistry.addSvgIcon(
       'add',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-add-24px.svg')
     );
-    iconRegsitry.addSvgIcon(
+    iconRegistry.addSvgIcon(
       'label',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-label-24px.svg')
     );
-    iconRegsitry.addSvgIcon(
+    iconRegistry.addSvgIcon(
       'edit',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-edit-24px.svg')
     );
-    iconRegsitry.addSvgIcon(
+    iconRegistry.addSvgIcon(
       'folder',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-folder-24px.svg')
     );
-    iconRegsitry.addSvgIcon(
+    iconRegistry.addSvgIcon(
       'people',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-people-24px.svg')
     );
   }
 
   ngOnInit() {
-    this.model = new HomeViewModel(this.postService.getDemoData(), this.categoryService.getDemoData().length, this.userService.getDemoData().length);
+    this.postService.getTopPosts().subscribe(data => this.model.posts = data);
+
+    this.postService.getPosts().subscribe(data => this.model.postCount = data.length);
+    this.categoryService.getCategoriesData().subscribe(data => this.model.categoryCount = data.length);
+    this.userService.getUsers().subscribe(data => this.model.userCount = data.length);
   }
 
 }

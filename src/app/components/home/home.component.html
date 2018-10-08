@@ -49,23 +49,23 @@
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Date Posted</th>
-                <th></th>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Date Posted</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let post of model.posts">
                 <td scope="row">{{ post.postId }}</td>
                 <td>{{ post.title }}</td>
-                <td>{{ post.category }}</td>
+                <td>{{ post.categoryName }}</td>
                 <td>{{ post.datePosted | date: 'longDate' }}</td>
                 <td>
                   <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
                     <mat-icon svgIcon="label" class="text-white"></mat-icon>
-                    <label class="mb-0 ml-1 align-middle cursor-pointer">Details</label>
+                    <label class="align-middle cursor-pointer mb-0 ml-1">Details</label>
                   </a>
                 </td>
               </tr>
