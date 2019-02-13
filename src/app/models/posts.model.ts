@@ -1,3 +1,8 @@
+export class NewPost {
+  title: string;
+  categoryId: number;
+  body: string;
+}
 
 export class PostModel {
   postId: number;

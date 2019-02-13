@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule } from '@angular/material';
+import { MatIconModule, MatFormFieldModule, MatSelectModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent, AddPostModalComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NavComponent } from './components/nav/nav.component';
 import { PostsComponent } from './components/posts/posts.component';
@@ -22,7 +22,7 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent, AddPostModalComponent,
     LoginComponent,
     NavComponent,
     PostsComponent,
@@ -31,15 +31,16 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     ProfileComponent,
     SettingsComponent,
     RegisterComponent,
-    PostDetailComponent
+    PostDetailComponent,
   ],
+  entryComponents: [AddPostModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatIconModule, MatSelectModule, MatFormFieldModule, MatInputModule,
+    MatIconModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   providers: [],

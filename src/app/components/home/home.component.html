@@ -3,8 +3,8 @@
     <div class="row">
       <div class="col-md-6">
         <h1>
-          <mat-icon svgIcon="settings" style="height:42px;width:42px;"></mat-icon>
-          <label class="mb-0 align-middle ml-1">Dashboard</label>
+          <mat-icon class="mat-42px align-bottom">settings</mat-icon>
+          <span class="ml-1">Dashboard</span>
         </h1>
       </div>
     </div>
@@ -16,21 +16,21 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
-          <mat-icon svgIcon="add"></mat-icon>
-          <label class="mb-0 align-middle">Add Post</label>
-        </a>
+        <button mat-raised-button class="btn-primary btn btn-block" (click)="onAddPostClick()">
+          <mat-icon class="align-bottom">add</mat-icon>
+          <span>Add Post</span>
+        </button>
       </div>
       <div class="col-md-3">
         <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
-          <mat-icon svgIcon="add"></mat-icon>
-          <label class="mb-0 align-middle">Add Category</label>
+          <mat-icon class="align-bottom">add</mat-icon>
+          <span>Add Category</span>
         </a>
       </div>
       <div class="col-md-3">
         <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
-          <mat-icon svgIcon="add"></mat-icon>
-          <label class="mb-0 align-middle">Add User</label>
+          <mat-icon class="align-bottom">add</mat-icon>
+          <span>Add User</span>
         </a>
       </div>
     </div>
@@ -64,8 +64,8 @@
                 <td>{{ post.datePosted | date: 'longDate' }}</td>
                 <td>
                   <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
-                    <mat-icon svgIcon="label" class="text-white"></mat-icon>
-                    <label class="align-middle cursor-pointer mb-0 ml-1">Details</label>
+                    <mat-icon class="text-white align-bottom">label</mat-icon>
+                    <span class="cursor-pointer ml-1">Details</span>
                   </a>
                 </td>
               </tr>
@@ -78,8 +78,8 @@
           <div class="card-body">
             <h3>Posts</h3>
             <h1 class="display-4">
-              <mat-icon svgIcon="edit" style="height:60px;width:60px;"></mat-icon>
-              <label class="mb-0 align-middle ml-1">{{ model.postCount }}</label>
+              <mat-icon class="mat-60px align-bottom">edit</mat-icon>
+              <span class="ml-1">{{ model.postCount }}</span>
             </h1>
             <a routerLink="/posts" class="btn btn-outline-light btn-sm">View</a>
           </div>
@@ -88,8 +88,8 @@
           <div class="card-body">
             <h3>Categories</h3>
             <h1 class="display-4">
-              <mat-icon svgIcon="folder" style="height:60px;width:60px;"></mat-icon>
-              <label class="mb-0 align-middle ml-1">{{ model.categoryCount }}</label>
+              <mat-icon class="mat-60px align-bottom">folder</mat-icon>
+              <span class="ml-1">{{ model.categoryCount }}</span>
             </h1>
             <a routerLink="/categories" class="btn btn-outline-light btn-sm">View</a>
           </div>
@@ -98,8 +98,8 @@
           <div class="card-body">
             <h3>Users</h3>
             <h1 class="display-4">
-              <mat-icon svgIcon="people" style="height:60px;width:60px;"></mat-icon>
-              <label class="mb-0 ml-1 align-middle">{{ model.userCount }}</label>
+              <mat-icon class="mat-60px align-bottom">people</mat-icon>
+              <span class="ml-1">{{ model.userCount }}</span>
             </h1>
             <a routerLink="/users" class="btn btn-outline-light btn-sm">View</a>
           </div>

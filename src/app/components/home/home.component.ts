@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { PostsService } from '../../services/posts/posts.service';
 import { HomeViewModel } from '../../models/home.model';
 import { CategoriesService } from '../../services/categories/categories.service';
 import { UsersService } from '../../services/users/users.service';
-import { PostViewModel } from '../../models/posts.model';
+import { PostViewModel, NewPost } from '../../models/posts.model';
 
 @Component({
   selector: 'app-home',
@@ -15,34 +14,10 @@ import { PostViewModel } from '../../models/posts.model';
 export class HomeComponent implements OnInit {
 
   model: HomeViewModel = new HomeViewModel();
+  newPost: NewPost = new NewPost();
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
-    private postService: PostsService, private categoryService: CategoriesService, private userService: UsersService) {
-    iconRegistry.addSvgIcon(
-      'settings',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-settings-20px.svg')
-    );
-    iconRegistry.addSvgIcon(
-      'add',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-add-24px.svg')
-    );
-    iconRegistry.addSvgIcon(
-      'label',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-label-24px.svg')
-    );
-    iconRegistry.addSvgIcon(
-      'edit',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-edit-24px.svg')
-    );
-    iconRegistry.addSvgIcon(
-      'folder',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-folder-24px.svg')
-    );
-    iconRegistry.addSvgIcon(
-      'people',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/icons/baseline-people-24px.svg')
-    );
-  }
+  constructor(private postService: PostsService, private categoryService: CategoriesService, private userService: UsersService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.postService.getTopPosts().subscribe(data => this.model.posts = data);
@@ -52,4 +27,46 @@ export class HomeComponent implements OnInit {
     this.userService.getUsers().subscribe(data => this.model.userCount = data.length);
   }
 
+
+  /**
+   * Modal Methods
+   */
+
+  /**
+   * Open Modal for Adding new Post
+   * @param modal
+   */
+  onAddPostClick(): void {
+    const dialogRef = this.dialog.open(AddPostModalComponent, {
+      maxHeight: '90vh',
+      maxWidth: '90vw',
+      height: 'auto',
+      width: 'auto',
+      autoFocus: false,
+      restoreFocus: true,
+      data: { newPost: this.newPost }
+    });
+
+    dialogRef.afterClosed().subscribe(modalResult => {
+      console.log({ modalResult });
+      this.newPost = modalResult;
+    })
+  }
+
+}
+
+/**
+ * Add New Post Modal
+ */
+@Component({
+  selector: 'app-home-addpost',
+  templateUrl: './modals/addpost.modal.html'
+})
+export class AddPostModalComponent {
+
+  constructor(public dialogRef: MatDialogRef<AddPostModalComponent>, @Inject(MAT_DIALOG_DATA) public data: NewPost) { }
+
+  onCloseClick(): void {
+    this.dialogRef.close();
+  }
 }
