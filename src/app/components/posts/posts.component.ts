@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostViewModel } from '../../models/posts.model';
 import { PostsService } from '../../services/posts/posts.service';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
