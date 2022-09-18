@@ -24,30 +24,29 @@ import { RegisterComponent } from './components/register/register.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent, AddPostModalComponent,
-    LoginComponent,
-    NavComponent,
-    PostsComponent,
-    CategoriesComponent,
-    UsersComponent,
-    ProfileComponent,
-    SettingsComponent,
-    RegisterComponent,
-    PostDetailComponent,
-  ],
-  entryComponents: [AddPostModalComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatIconModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent, AddPostModalComponent,
+        LoginComponent,
+        NavComponent,
+        PostsComponent,
+        CategoriesComponent,
+        UsersComponent,
+        ProfileComponent,
+        SettingsComponent,
+        RegisterComponent,
+        PostDetailComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatIconModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule,
+        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
