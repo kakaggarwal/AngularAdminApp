@@ -7,9 +7,10 @@ import { UsersService } from '../../services/users/users.service';
 import { PostViewModel, NewPost } from '../../models/posts.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    standalone: false
 })
 export class HomeComponent implements OnInit {
 
@@ -59,8 +60,9 @@ export class HomeComponent implements OnInit {
  * Add New Post Modal
  */
 @Component({
-  selector: 'app-home-addpost',
-  templateUrl: './modals/addpost.modal.html'
+    selector: 'app-home-addpost',
+    templateUrl: './modals/addpost.modal.html',
+    standalone: false
 })
 export class AddPostModalComponent {
 

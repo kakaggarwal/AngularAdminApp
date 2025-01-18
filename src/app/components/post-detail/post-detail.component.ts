@@ -11,9 +11,10 @@ import { CategoryModel } from '../../models/category.model';
 import { CategoriesService } from '../../services/categories/categories.service';
 
 @Component({
-  selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.scss']
+    selector: 'app-post-detail',
+    templateUrl: './post-detail.component.html',
+    styleUrls: ['./post-detail.component.scss'],
+    standalone: false
 })
 export class PostDetailComponent implements OnInit {
   model: PostDetailViewModel;

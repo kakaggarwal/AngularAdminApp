@@ -5,9 +5,10 @@ import { UsersService } from '../../services/users/users.service';
 import { UserViewModel } from '../../models/user.model';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+    selector: 'app-users',
+    templateUrl: './users.component.html',
+    styleUrls: ['./users.component.scss'],
+    standalone: false
 })
 export class UsersComponent implements OnInit {
   searchValue: string = '';

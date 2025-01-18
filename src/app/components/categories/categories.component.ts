@@ -5,9 +5,10 @@ import { CategoriesService } from '../../services/categories/categories.service'
 import { CategoryViewModel } from '../../models/category.model';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+    selector: 'app-categories',
+    templateUrl: './categories.component.html',
+    styleUrls: ['./categories.component.scss'],
+    standalone: false
 })
 export class CategoriesComponent implements OnInit {
   searchValue: string = '';
