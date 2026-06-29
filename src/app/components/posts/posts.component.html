@@ -49,18 +49,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let post of model; index as i" [ngClass]="{ 'd-none' : i < 6 * (activePage - 1) || i >= 6 * activePage }">
-                <td scope="row">{{ i + 1 }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.categoryName }}</td>
-                <td>{{ post.datePosted | date: 'longDate' }}</td>
-                <td>
-                  <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
-                    <mat-icon svgIcon="label" class="text-white"></mat-icon>
-                    <label class="align-middle cursor-pointer mb-0 ml-2">Details</label>
-                  </a>
-                </td>
-              </tr>
+              @for (post of model; track post; let i = $index) {
+                <tr [ngClass]="{ 'd-none' : i < 6 * (activePage - 1) || i >= 6 * activePage }">
+                  <td scope="row">{{ i + 1 }}</td>
+                  <td>{{ post.title }}</td>
+                  <td>{{ post.categoryName }}</td>
+                  <td>{{ post.datePosted | date: 'longDate' }}</td>
+                  <td>
+                    <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
+                      <mat-icon svgIcon="label" class="text-white"></mat-icon>
+                      <label class="align-middle cursor-pointer mb-0 ml-2">Details</label>
+                    </a>
+                  </td>
+                </tr>
+              }
             </tbody>
           </table>
 

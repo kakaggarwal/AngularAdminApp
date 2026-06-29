@@ -47,37 +47,39 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let category of model; index as i">
-                <td scope="row">{{ i + 1 }}</td>
-                <td>{{ category.title }}</td>
-                <td>{{ category.datePosted | date : 'longDate' }}</td>
-              </tr>
+              @for (category of model; track category; let i = $index) {
+                <tr>
+                  <td scope="row">{{ i + 1 }}</td>
+                  <td>{{ category.title }}</td>
+                  <td>{{ category.datePosted | date : 'longDate' }}</td>
+                </tr>
+              }
             </tbody>
           </table>
 
           <!--<nav class="ml-4">
-            <ul class="pagination">
-              <li class="page-item disabled">
-                <a href="#" class="page-link">Previous</a>
-              </li>
-              <li class="page-item active">
-                <a href="#" class="page-link">1</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">2</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">3</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">Next</a>
-              </li>
-            </ul>
-          </nav>-->
-        </div>
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a href="#" class="page-link">Previous</a>
+            </li>
+            <li class="page-item active">
+              <a href="#" class="page-link">1</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">3</a>
+            </li>
+            <li class="page-item">
+              <a href="#" class="page-link">Next</a>
+            </li>
+          </ul>
+        </nav>-->
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <footer id="main-footer" class="bg-dark text-white py-3 py-xl-4 fixed-bottom">

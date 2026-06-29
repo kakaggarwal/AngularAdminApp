@@ -57,18 +57,20 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let post of model.posts">
-                <td scope="row">{{ post.postId }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.categoryName }}</td>
-                <td>{{ post.datePosted | date: 'longDate' }}</td>
-                <td>
-                  <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
-                    <mat-icon class="text-white align-bottom">label</mat-icon>
-                    <span class="cursor-pointer ml-1">Details</span>
-                  </a>
-                </td>
-              </tr>
+              @for (post of model.posts; track post) {
+                <tr>
+                  <td scope="row">{{ post.postId }}</td>
+                  <td>{{ post.title }}</td>
+                  <td>{{ post.categoryName }}</td>
+                  <td>{{ post.datePosted | date: 'longDate' }}</td>
+                  <td>
+                    <a routerLink="/details/{{ post.postId }}" class="btn btn-secondary">
+                      <mat-icon class="text-white align-bottom">label</mat-icon>
+                      <span class="cursor-pointer ml-1">Details</span>
+                    </a>
+                  </td>
+                </tr>
+              }
             </tbody>
           </table>
         </div>
