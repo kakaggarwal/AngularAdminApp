@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { PostsService } from '../../services/posts/posts.service';
 import { HomeViewModel } from '../../models/home.model';
@@ -10,6 +10,7 @@ import { PostViewModel, NewPost } from '../../models/posts.model';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HomeComponent implements OnInit {
@@ -62,6 +63,7 @@ export class HomeComponent implements OnInit {
 @Component({
     selector: 'app-home-addpost',
     templateUrl: './modals/addpost.modal.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AddPostModalComponent {

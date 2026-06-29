@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { PostViewModel } from '../../models/posts.model';
 import { PostsService } from '../../services/posts/posts.service';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
     selector: 'app-posts',
     templateUrl: './posts.component.html',
     styleUrls: ['./posts.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PostsComponent implements OnInit {

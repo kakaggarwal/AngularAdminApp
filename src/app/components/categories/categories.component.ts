@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CategoriesService } from '../../services/categories/categories.service';
@@ -8,6 +8,7 @@ import { CategoryViewModel } from '../../models/category.model';
     selector: 'app-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CategoriesComponent implements OnInit {

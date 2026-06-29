@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,5 +41,5 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
         BrowserAnimationsModule,
         FormsModule,
         MatIconModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialogModule,
-        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()], providers: [provideHttpClient(withXhr(), withInterceptorsFromDi())] })
 export class AppModule { }

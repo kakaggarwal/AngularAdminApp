@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -14,6 +14,7 @@ import { CategoriesService } from '../../services/categories/categories.service'
     selector: 'app-post-detail',
     templateUrl: './post-detail.component.html',
     styleUrls: ['./post-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PostDetailComponent implements OnInit {
